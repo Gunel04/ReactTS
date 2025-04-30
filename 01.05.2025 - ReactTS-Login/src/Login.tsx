@@ -15,8 +15,8 @@ type myInfoType = {
     password: string
 }
 const myInfo: myInfoType = {
-    email: "alkhasovagunel@gmail.com",
-    password: "gunel2004"
+    email: "gunel@gmail.com",
+    password: "gunel123"
 }
 
 console.log(myInfo);

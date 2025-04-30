@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
 var sweetalert2_1 = require("sweetalert2");
 var myInfo = {
-    email: "alkhasovagunel@gmail.com",
-    password: "gunel2004"
+    email: "gunel@gmail.com",
+    password: "gunel123"
 };
 console.log(myInfo);
 var Login = function (_a) {
