@@ -1,9 +1,24 @@
 .entire-div {
     width: 100%;
     height: 100vh;
-    background-color: blanchedalmond;
-    form {
-        border: 1px solid black;
-        /* padding: 25px 50px; */
+    /* background-color: blanchedalmond; */
+    background-image: url('https://sdmntprpolandcentral.oaiusercontent.com/files/00000000-672c-620a-b6d8-388919703089/raw?se=2025-05-01T10%3A55%3A03Z&sp=r&sv=2024-08-04&sr=b&scid=835d46bc-e8ab-5ace-a04b-aae780903f33&skoid=06e05d6f-bdd9-4a88-a7ec-2c0a779a08ca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-01T05%3A51%3A33Z&ske=2025-05-02T05%3A51%3A33Z&sks=b&skv=2024-08-04&sig=9B8bBjyIIktKJegRjX7B/DuNKJ/tu2CTce0/t9rVmvo%3D');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .form-div {
+        background-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        padding: 15px 20px;
+        border-radius: 15px;
+        form {
+            a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
     }
+
 }
