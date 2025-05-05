@@ -4,13 +4,16 @@ import Swal from "sweetalert2";
 
 
 interface funcType {
-  todoFuncProp: (comingText:string)=>void
+  todoFuncProp: (comingText: string) => void,
+  count: number,
+  clearAllFuncProp: () => void
 }
-const Todo: React.FC<funcType> = ({ todoFuncProp }) => {
+
+
+const Todo: React.FC<funcType> = ({ todoFuncProp, count, clearAllFuncProp }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [count,setCount] = useState<number>(0);
+  // const [count,setCount] = useState<number>(0);
   const handleForm = (e: React.FormEvent) => {
-    // let count:number = 0;
     e.preventDefault();
     if (!inputRef.current?.value) {
       Swal.fire({
@@ -21,7 +24,7 @@ const Todo: React.FC<funcType> = ({ todoFuncProp }) => {
     }
     else {
       todoFuncProp(inputRef.current.value);
-      setCount(count=>count+1)
+      // setCount(count=>count+1)
       console.log(count);
       inputRef.current.value = "";
     }
@@ -34,7 +37,10 @@ const Todo: React.FC<funcType> = ({ todoFuncProp }) => {
           <Form.Label>Add new to-do...</Form.Label>
           <Form.Control type="text" placeholder="Enter your new to-do" ref={inputRef} />
         </Form.Group>
-        <Button type="submit">Add</Button>
+        <div className="d-flex justify-content-between">
+          <Button type="submit" variant="success">Add</Button>
+          <Button type="button" variant="warning" onClick={()=>clearAllFuncProp()}>Clear All</Button>
+        </div>
         <p className="h6 mt-4">Total To-do count: {count} </p>
       </Form>
     </>
