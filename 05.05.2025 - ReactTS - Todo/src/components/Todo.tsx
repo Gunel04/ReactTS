@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef} from "react";
 import { Button, Form } from "react-bootstrap"
 import Swal from "sweetalert2";
 
@@ -12,7 +12,6 @@ interface funcType {
 
 const Todo: React.FC<funcType> = ({ todoFuncProp, count, clearAllFuncProp }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  // const [count,setCount] = useState<number>(0);
   const handleForm = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputRef.current?.value) {
@@ -24,7 +23,6 @@ const Todo: React.FC<funcType> = ({ todoFuncProp, count, clearAllFuncProp }) => 
     }
     else {
       todoFuncProp(inputRef.current.value);
-      // setCount(count=>count+1)
       console.log(count);
       inputRef.current.value = "";
     }
