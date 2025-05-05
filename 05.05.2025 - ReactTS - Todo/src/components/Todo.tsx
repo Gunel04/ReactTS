@@ -29,18 +29,19 @@ const Todo: React.FC<funcType> = ({ todoFuncProp, count, clearAllFuncProp }) => 
   }
   return (
     <>
-      <p className="h2 my-2">My To-Do app</p>
+      <p className="h2 my-2 text-center fw-bold">My To-Do app</p>
       <Form className="my-4" onSubmit={handleForm}>
         <Form.Group className="mb-3">
-          <Form.Label>Add new to-do...</Form.Label>
+          <Form.Label className="h4">Add new to-do...</Form.Label>
           <Form.Control type="text" placeholder="Enter your new to-do" ref={inputRef} />
         </Form.Group>
         <div className="d-flex justify-content-between">
           <Button type="submit" variant="success">Add</Button>
           <Button type="button" variant="warning" onClick={()=>clearAllFuncProp()}>Clear All</Button>
         </div>
-        <p className="h6 mt-4">Total To-do count: {count} </p>
+        <p className="h5 mt-4">Total To-do count: {count} </p>
       </Form>
+      <hr />
     </>
   )
 }

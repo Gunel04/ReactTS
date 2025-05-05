@@ -10,9 +10,9 @@ interface todoListType {
 
 const TodoList: React.FC<todoListType> = ({ listItems, deleteTodoFunc }) => {
     return (
-        <ListGroup >
+        <ListGroup className="list" >
             {listItems.length === 0 ? <p className="h5 text-center">You don't have any to-do!</p> : listItems.map((item: todoTypes, index: number) => (
-                <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">{item.text} <Button variant="danger" onClick={()=>deleteTodoFunc(item)}>X</Button></ListGroup.Item>
+                <ListGroup.Item  key={index} className=" to-do-list d-flex justify-content-between align-items-center">{index+1}. {item.text} <Button className="delete-btn" variant="danger" onClick={()=>deleteTodoFunc(item)}>X</Button></ListGroup.Item>
             ))}
 
         </ListGroup>
