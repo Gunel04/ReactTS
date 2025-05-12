@@ -25,12 +25,21 @@ const Filter: React.FC = () => {
     const [filteredCategory, setFilteredCategory] = useState<string>(categories);
     const [active, setActive] = useState<string>("");
     useEffect(() => {
-        axios.get("https://fakestoreapi.com/products/categories")
-            .then(res => setCategory(res.data))
+        if (!categories) {
+            axios.get("https://fakestoreapi.com/products/categories")
+                .then(res => setCategory(res.data))
 
+            axios.get(`https://fakestoreapi.com/products`)
+                .then(res => setProducts(res.data));
+        }
+        else {
+            axios.get("https://fakestoreapi.com/products/categories")
+                .then(res => setCategory(res.data))
 
-        axios.get(`https://fakestoreapi.com/products/category/${filteredCategory}`)
-            .then(res => setProducts(res.data));
+            axios.get(`https://fakestoreapi.com/products/category/${filteredCategory}`)
+                .then(res => setProducts(res.data));
+        }
+
     }, [filteredCategory]);
 
     return (
@@ -56,8 +65,8 @@ const Filter: React.FC = () => {
                                             <h5 className="card-title">{item.title}</h5>
                                         </div>
                                         <div className="card-body-2 pt-4">
-                                            <h4 className="card-title" style={{color:"rgb(11,215,195)"}}>Price: <span style={{fontStyle:"italic", color:"black"}}>${item.price}</span> </h4>
-                                            <h5 className="text-center my-2" style={{fontStyle:"italic"}}>More Detail:</h5>
+                                            <h4 className="card-title" style={{ color: "rgb(11,215,195)" }}>Price: <span style={{ fontStyle: "italic", color: "black" }}>${item.price}</span> </h4>
+                                            <h5 className="text-center my-2" style={{ fontStyle: "italic" }}>More Detail:</h5>
                                             <p className="card-text">{item.description}</p>
                                         </div>
                                     </div>
