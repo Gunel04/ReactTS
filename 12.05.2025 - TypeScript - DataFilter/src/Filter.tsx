@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
+import { FaArrowCircleDown } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 
 type productType = {
@@ -23,6 +24,7 @@ const Filter: React.FC = () => {
     const [category, setCategory] = useState<string[]>([]);
     const [products, setProducts] = useState<productType[]>([]);
     const [filteredCategory, setFilteredCategory] = useState<string>(categories);
+    const [active, setActive] = useState<string>("");
     useEffect(() => {
         axios.get("https://fakestoreapi.com/products/categories")
             .then(res => setCategory(res.data))
@@ -37,9 +39,11 @@ const Filter: React.FC = () => {
             <Row>
                 <Col sm={3}>
                     {/* {filteredCategory} */}
+                    {/* {active} */}
+                    <h3>Filter by Categories</h3>
                     <ul className="list-group">
                         {category.map((item: string, index: number) => (
-                            <Link to={`/${item}`} key={index} className="list-group-item" onClick={() => { setFilteredCategory(item) }}>{item.charAt(0).toUpperCase() + item.slice(1)}</Link>
+                            <Link to={`/${item}`} key={index} className={`list-group-item ${active === item ? "color" : ""}`} onClick={() => { setFilteredCategory(item); setActive(item) }}>{item.charAt(0).toUpperCase() + item.slice(1)}</Link>
                         ))}
                     </ul>
                 </Col>
@@ -47,12 +51,15 @@ const Filter: React.FC = () => {
                     <Row className="g-3">
                         {products.map((item: productType, index: number) => (
                             <Col key={index} sm={12} md={4} className="">
-                                <div className="card">
+                                <div className="card p-2">
                                     <img src={item.image} height={200} style={{ objectFit: "contain" }} className="card-img-top" alt="..." />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{item.title.slice(0, 20)}...</h5>
+                                    <div className="card-body-1 ">
+                                        <h5 className="card-title">{item.title}</h5>
+                                        <button className="arrow-btn"><FaArrowCircleDown /></button>
+                                    </div>
+                                    <div className="card-body-2">
                                         <h6 className="card-title">${item.price}</h6>
-                                        <p className="card-text">{item.description.slice(0, 65)}...</p>
+                                        <p className="card-text">{item.description}</p>
                                     </div>
                                 </div>
                             </Col>

@@ -1,0 +1,64 @@
+.list-group {
+    border: 1px solid black;
+    border-radius: 0;
+
+    .list-group-item {
+        color: rgb(11, 215, 195);
+        transition: 0.4s;
+
+        &:hover {
+            font-size: 20px;
+        }
+    }
+
+    .color {
+        color: white;
+        background-color: rgb(11, 215, 195);
+        font-size: 20px;
+    }
+}
+
+.card {
+    transition: 0.4s;
+    border: 1px solid black;
+    border-radius: 0;
+
+    .card-body-2 {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.8s, max-height 0.8s;
+    }
+
+    &:hover .card-body-2 {
+        opacity: 1;
+        max-height: 500px;
+        /* təqribi dəyər, ehtiyacına görə dəyiş */
+    }
+
+    .card-body-1 {
+        .arrow-btn {
+            background-color: rgb(11, 215, 195);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            color: white;
+
+        }
+    }
+
+
+
+
+
+}
+
+/* .arrow-btn:hover {
+    .card-body-2 {
+        display: block;
+    }
+    .card-title {
+        color: red;
+    }
+} */
