@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
-import { FaArrowCircleDown } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 
 type productType = {
@@ -38,9 +37,7 @@ const Filter: React.FC = () => {
         <Container className="my-5">
             <Row>
                 <Col sm={3}>
-                    {/* {filteredCategory} */}
-                    {/* {active} */}
-                    <h3>Filter by Categories</h3>
+                    <h3 className="mt-3 mb-2">Filter by Categories</h3>
                     <ul className="list-group">
                         {category.map((item: string, index: number) => (
                             <Link to={`/${item}`} key={index} className={`list-group-item ${active === item ? "color" : ""}`} onClick={() => { setFilteredCategory(item); setActive(item) }}>{item.charAt(0).toUpperCase() + item.slice(1)}</Link>
@@ -49,18 +46,22 @@ const Filter: React.FC = () => {
                 </Col>
                 <Col sm={9}>
                     <Row className="g-3">
+                        <h3 className="text-center">Our Products</h3>
                         {products.map((item: productType, index: number) => (
                             <Col key={index} sm={12} md={4} className="">
                                 <div className="card p-2">
-                                    <img src={item.image} height={200} style={{ objectFit: "contain" }} className="card-img-top" alt="..." />
-                                    <div className="card-body-1 ">
-                                        <h5 className="card-title">{item.title}</h5>
-                                        <button className="arrow-btn"><FaArrowCircleDown /></button>
+                                    <div className="card-inner">
+                                        <div className="card-body-1 ">
+                                            <img src={item.image} height={200} style={{ objectFit: "contain" }} className="card-img-top mb-2" alt="..." />
+                                            <h5 className="card-title">{item.title}</h5>
+                                        </div>
+                                        <div className="card-body-2 pt-4">
+                                            <h4 className="card-title" style={{color:"rgb(11,215,195)"}}>Price: <span style={{fontStyle:"italic", color:"black"}}>${item.price}</span> </h4>
+                                            <h5 className="text-center my-2" style={{fontStyle:"italic"}}>More Detail:</h5>
+                                            <p className="card-text">{item.description}</p>
+                                        </div>
                                     </div>
-                                    <div className="card-body-2">
-                                        <h6 className="card-title">${item.price}</h6>
-                                        <p className="card-text">{item.description}</p>
-                                    </div>
+
                                 </div>
                             </Col>
                         ))}

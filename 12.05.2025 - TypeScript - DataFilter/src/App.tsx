@@ -10,7 +10,6 @@ const App = () => {
           <Route path="/:categories" element={<Filter />}></Route>
         </Routes>
       </BrowserRouter>
-      {/* <Filter /> */}
     </div>
   )
 }
