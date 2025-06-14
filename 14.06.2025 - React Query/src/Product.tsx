@@ -16,7 +16,7 @@ const Product: React.FC = () => {
     console.log(data);
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <p>Loading products...</p>
     }
     return (
         <div className="m-5">
